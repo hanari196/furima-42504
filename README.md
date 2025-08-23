@@ -15,7 +15,7 @@
 | title              | string     | null: false |
 | category           | integer    | null: false |
 | condition          | integer    | null: false |
-| delivery           | string     | null: false |
+| Shipping method    | string     | null: false |
 | price              | integer    | null: false |
 
 
@@ -26,7 +26,7 @@
 | user_id    | bigint     | null: false |
 | item_id    | bigint     | null: false |
 
-## adresses テーブル
+## addresses テーブル
 
 | Column       | Type       | Options     |
 | ----------   | ---------- | ----------- |
