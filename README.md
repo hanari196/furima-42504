@@ -36,3 +36,4 @@
 | house_number | integer    | null: false |
 | building_name| string     |             |
 | room_number  | integer    |             |
+
