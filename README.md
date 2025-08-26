@@ -9,9 +9,7 @@
 | first_name         | string  | null: false |
 | last_kana          | string  | null: false |
 | first_kana         | string  | null: false |
-| birth_year         | integer | null: false |
-| birth_month        | integer | null: false |
-| birth_day          | integer | null: false |
+| birth_day          | date    | null: false |
 
 
 ## items テーブル
@@ -22,9 +20,9 @@
 | product_contents   | text       | null: false |
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
-| shipping_method    | integer    | null: false |
-| ship_from          | integer    | null: false |
-| delivery_time      | integer    | null: false |
+| shipping_method_id | integer    | null: false |
+| prefecture_id      | integer    | null: false |
+| delivery_time_id   | integer    | null: false |
 | price              | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
 
