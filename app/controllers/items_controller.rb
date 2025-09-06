@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # index, show は誰でも見れる
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
 
   def index
     # トップページ表示

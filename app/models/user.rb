@@ -8,7 +8,8 @@ class User < ApplicationRecord
     validates :nickname,presence: true
 
     validates :password,
-               format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/, message: "は英字と数字の両方を含めて設定してください" }
+               format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[!-~]+\z/, 
+               message: "は英字と数字の両方を含めて設定してください" }
 
     validates :last_name, :first_name,
                presence: true,
