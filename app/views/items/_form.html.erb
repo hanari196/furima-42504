@@ -1,0 +1,7 @@
+<%= form_with model: item, local: true do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :product_contents %>
+  <%= f.select :category_id, Category.all.collect { |c| [c.name, c.id] } %>
+  <%= f.file_field :image %>
+  <%= f.submit "出品" %>
+<% end %>
