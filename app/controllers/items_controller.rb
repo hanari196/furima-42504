@@ -2,8 +2,9 @@ class ItemsController < ApplicationController
   # index, show は誰でも見れる
   before_action :authenticate_user!, except: [:index, :show]
 
+  # トップページ表示
   def index
-    # トップページ表示
+    @items = Item.order(created_at: :desc)
   end
 
   def show
@@ -29,8 +30,13 @@ private
 
   def item_params
     params.require(:item).permit(
-      :title, :product_contents, :category_id, :condition_id,
-      :shipping_method_id, :prefecture_id, :delivery_time_id,
+      :title, 
+      :product_contents, 
+      :category_id, 
+      :condition_id,
+      :shipping_method_id, 
+      :prefecture_id, 
+      :delivery_time_id,
       :price, :image
     ).merge(user_id: current_user.id)
   end
