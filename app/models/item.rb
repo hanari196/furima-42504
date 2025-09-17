@@ -10,10 +10,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :delivery_time
 
-  with_options presence: true do
-    validates :price
-  end
-
   # 画像１枚添付
   validates :image, presence: true
 
