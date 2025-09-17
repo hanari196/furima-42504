@@ -11,6 +11,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_time
 
   with_options presence: true do
+    validates :title
+    validates :product_contents
+    validates :image
     validates :price
   end
 
@@ -31,10 +34,8 @@ class Item < ApplicationRecord
   end
 
   # 価格（300~9,999,999、整数のみ）
-  with_options presence: true do
-  validates :price, numericality: { only_integer: true, message: 'must be an integer' }
-  validates :price, numericality: { greater_than_or_equal_to: 300,
-                                    less_than_or_equal_to: 9_999_999,
-                                    message: 'must be between ¥300 and ¥9,999,999' }
-  end
+  validates :price, numericality: { only_integer: true, message: 'is not a number' }
+  validates :price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                            message: 'must be between ¥300 and ¥9,999,999' }
 end
