@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   # トップページ表示
   def index
-   # @items = Item.order(created_at: :desc)
+    @items = Item.order(created_at: :desc)
   end
 
   def show
