@@ -5,9 +5,9 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, local: true do |f| %>
 
-      <%= render 'shared/error_messages', model: f.object %>
+    <%= form_with model: @item, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
     
 
     <%# 商品画像 %>
@@ -149,6 +149,7 @@
     <%# /下部ボタン %>
   </div>
   <% end %>
+
 
   <footer class="items-sell-footer">
     <ul class="menu">

@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
       it '価格が空では出品できない' do
         item.price = ''
         item.valid?
-        expect(item.errors.full_messages).to include('Price is not a number')
+        expect(item.errors.full_messages).to include("Price can't be blank")
       end
 
       it '価格が300円未満では出品できない' do
@@ -80,7 +80,7 @@ RSpec.describe Item, type: :model do
       it '価格が全角数字では出品できない' do
         item.price = '３００'
         item.valid?
-        expect(item.errors.full_messages).to include('Price is not a number')
+        expect(item.errors.full_messages).to include("Price must be an integer")
       end
 
       it 'ユーザーが紐付いていないと出品できない' do

@@ -122,10 +122,9 @@
 
     <ul class='item-lists'>
       <% if @items.any? %>
-        <% @items.each do |item| %>
-          <li class='list'>
-            <%= link_to item_path(item) do %>
-              <div class='item-img-content'>
+      <% @items.each do |item| %>
+        <li class='list'>
+            <div class='item-img-content'>
                 <% if item.image.attached? %>
                   <%= image_tag item.image, class: "item-img" %>
                 <% else %>  
@@ -133,9 +132,8 @@
                 <% end %>
               
                 <%# Sold Out を画像上に重ねる %>
-                <%#div class='sold-out'>Sold Out!!</div>
-                <% end %>
-              </div>
+                <!-- <div class='sold-out'>Sold Out!!</div> -->
+            </div>
 
           <div class='item-info'>
             <h3 class='item-name'><%= item.title %></h3>
@@ -145,12 +143,11 @@
                 <%= item.category.name %>
                 <%= item.condition.name %> /
                 <%= item.shipping_method.name %>
-                </span>
-              </div>
+              </span>
             </div>
-          <% end %>
+          </div>
         </li>
-      <% end %>
+      <% end %>  
     <% else %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -164,8 +161,8 @@
         <% end %>
       </li>
     <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
 
 
   <%#//商品がない場合は以下のダミー商品が表示 %>
