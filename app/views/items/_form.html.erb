@@ -1,0 +1,48 @@
+<%= form_with model: item, local: true do |f| %>
+  <div class="field">
+    <%= f.label :title, "商品名" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :product_contents, "商品の説明" %>
+    <%= f.text_area :product_contents %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category_id, "カテゴリー" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :condition_id, "商品の状態" %>
+    <%= f.collection_select :condition_id, Condition.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :shipping_method_id, "配送料の負担" %>
+    <%= f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture_id, "発送元の地域" %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :delivery_time_id, "発送までの日数" %>
+    <%= f.collection_select :delivery_time_id, DeliveryTime.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price, "価格" %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "商品画像" %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit "出品" %>
+<% end %>
