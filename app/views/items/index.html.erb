@@ -138,20 +138,18 @@
                 <% end %>
               </div>
 
-          <div class='item-info'>
-            <h3 class='item-name'><%= item.title %></h3>
-            <div class='item-price'>
-              <span>
-                <%= item.price %>円<br>
-                <%= item.category.name %>
-                <%= item.condition.name %> /
-                <%= item.shipping_method.name %>
-                </span>
+              <div class='item-info'>
+                <h3 class='item-name'><%= item.title %></h3>
+                <div class='item-price'>
+                  <span>
+                    <%= item.price %>円<br>
+                    <%= item.shipping_method.name %>
+                  </span>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </li>
-      <% end %>
+            <% end %>
+          </li>
+        <% end %>
     <% else %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -161,16 +159,16 @@
             <div class='item-price'>
               <span>99999999円<br>(税込み)</span>
             </div>
+            <div class='item-shipping-fee'>
+              <span>送料負担サンプル</span>
+            </div>
           </div>
         <% end %>
       </li>
     <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
 
-
-  <%#//商品がない場合は以下のダミー商品が表示 %>
-  <%# /商品一覧 %>
 <%= link_to new_item_path, class: 'purchase-btn' do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>

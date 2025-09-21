@@ -1,20 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
   const priceInput = document.getElementById('item-price');
   const addTaxPrice = document.getElementById('add-tax-price');
   const profit = document.getElementById('profit');
 
-  if (priceInput) {
+  if (!priceInput) return;
+
     priceInput.addEventListener('input', () => {
-      const price = Number(priceInput.value);
-      if (price >= 300 && price <= 9999999) {
-        const fee = Math.floor(price * 0.1);
-        const gain = price - fee;
-        addTaxPrice.textContent = fee;
-        profit.textContent = gain;
-      } else {
-        addTaxPrice.textContent = 0;
-        profit.textContent = 0;
-      }
-    });
-  }
+     const value = parseInt(priceInput.value, 10) || 0;
+    addTaxPrice.innerHTML = Math.floor(value * 0.1);
+    profit.innerHTML = value - Math.floor(value * 0.1);
+  });
 });

@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   # トップページ表示
   def index
-    @items = Item.all
+    @items = Item.with_attached_image.order(created_at: :desc)
   end
 
   def show
