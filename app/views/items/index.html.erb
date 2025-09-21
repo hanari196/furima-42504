@@ -124,7 +124,7 @@
       <% if @items.any? %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to item_path(item) do %>
+            <%#= link_to item_path(item) do %>
               <div class='item-img-content'>
                   <% if item.image.attached? %>
                     <%= image_tag item.image, class: "item-img" %>
@@ -133,9 +133,9 @@
                   <% end %>
               
                 <%# Sold Out を画像上に重ねる %>
-                <% if item.sold_out? %>
-                  <div class='sold-out'>Sold Out!!</div>
-                <% end %>
+                <%# if item.sold_out? %>
+                  <%# div class='sold-out'>Sold Out!!</div>
+                <%# end %>
               </div>
 
               <div class='item-info'>
@@ -147,7 +147,7 @@
                   </span>
                 </div>
               </div>
-            <% end %>
+            <%# end %>
           </li>
         <% end %>
     <% else %>
