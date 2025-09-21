@@ -126,14 +126,15 @@
           <li class='list'>
             <%= link_to item_path(item) do %>
               <div class='item-img-content'>
-                <% if item.image.attached? %>
-                  <%= image_tag item.image, class: "item-img" %>
-                <% else %>  
-                  <%= image_tag "item-sample.png", class: "item-img" %>
-                <% end %>
+                  <% if item.image.attached? %>
+                    <%= image_tag item.image, class: "item-img" %>
+                  <% else %>  
+                    <%= image_tag "item-sample.png", class: "item-img" %>
+                  <% end %>
               
                 <%# Sold Out を画像上に重ねる %>
-                <%#div class='sold-out'>Sold Out!!</div>
+                <% if item.sold_out? %>
+                  <div class='sold-out'>Sold Out!!</div>
                 <% end %>
               </div>
 
