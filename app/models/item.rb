@@ -13,9 +13,9 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_one :order
 
-    def sold_out?
-      order.present?
-    end
+  def sold_out?
+    order.present?
+  end
 
   with_options presence: true do
     validates :image
@@ -31,7 +31,7 @@ class Item < ApplicationRecord
       validates :delivery_time_id
     end
   end
-  
+
   validates :price,
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 300,
