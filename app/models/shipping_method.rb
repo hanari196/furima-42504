@@ -1,3 +1,4 @@
+# app/models/shipping_method.rb
 class ShippingMethod < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },

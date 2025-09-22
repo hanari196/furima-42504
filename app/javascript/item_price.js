@@ -1,25 +1,13 @@
-function calculatePrice() {
-  const priceInput = document.getElementById("item-price");
-  if (!priceInput) return; // フォームがないページでは動作しない
+document.addEventListener('turbo:load', () => {
+  const priceInput = document.getElementById('item-price');
+  const addTaxPrice = document.getElementById('add-tax-price');
+  const profit = document.getElementById('profit');
 
-  priceInput.addEventListener("input", () => {
-    const price = parseInt(priceInput.value, 10);
+  if (!priceInput) return;
 
-    const taxPrice = document.getElementById("add-tax-price");
-    const profit = document.getElementById("profit");
-
-    if (!isNaN(price)) {
-      const tax = Math.floor(price * 0.1);            // 手数料 10%、小数点切り捨て
-      const profitValue = Math.floor(price - tax);   // 利益も切り捨て
-      taxPrice.textContent = tax;
-      profit.textContent = profitValue;
-    } else {
-      taxPrice.textContent = 0;
-      profit.textContent = 0;
-    }
+    priceInput.addEventListener('input', () => {
+     const value = parseInt(priceInput.value, 10) || 0;
+    addTaxPrice.innerHTML = Math.floor(value * 0.1);
+    profit.innerHTML = value - Math.floor(value * 0.1);
   });
-}
-
-// Turbo（Hotwire）対応
-window.addEventListener("turbo:load", calculatePrice);
-window.addEventListener("turbo:render", calculatePrice);
+});

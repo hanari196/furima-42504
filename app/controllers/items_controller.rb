@@ -4,11 +4,12 @@ class ItemsController < ApplicationController
 
   # トップページ表示
   def index
-    @items = Item.all
+    
+    @items = Item.with_attached_image.order(created_at: :desc)
   end
 
   def show
-    商品詳細表示
+    # 商品詳細表示
   end
 
   # 出品ページ（ログイン必須）
@@ -37,7 +38,7 @@ class ItemsController < ApplicationController
       :shipping_method_id,
       :prefecture_id,
       :delivery_time_id,
-      :price, 
+      :price,
       :image
     ).merge(user_id: current_user.id)
   end

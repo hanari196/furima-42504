@@ -1,3 +1,4 @@
+# app/models/category.rb
 class Category < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
