@@ -47,6 +47,13 @@
         <%= link_to "購入画面に進む", new_item_order_path(@item), class:"item-red-btn"%>
       <% end %>
     <% end %>
+  
+    <!-- 売り切れ商品 -->
+    <%# if @item.sold_out? %>
+      <%# div class='sold-out-label'>
+        <span>Sold Out!!</span>
+      </div>
+    <% end %>
 
     <%# 商品詳細 %> 
     <div class="item-explain-box">
