@@ -3,13 +3,12 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   # トップページ表示
-  def index
-    
+  def index 
     @items = Item.with_attached_image.order(created_at: :desc)
   end
 
   def show
-    # 商品詳細表示
+    @item = Item.find(params[:id])
   end
 
   # 出品ページ（ログイン必須）
