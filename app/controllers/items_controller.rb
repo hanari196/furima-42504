@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   # トップページ表示
-  def index 
+  def index
     @items = Item.with_attached_image.order(created_at: :desc)
   end
 
