@@ -4,12 +4,11 @@ class ItemsController < ApplicationController
 
   # トップページ表示
   def index
-    
     @items = Item.with_attached_image.order(created_at: :desc)
   end
 
   def show
-    # 商品詳細表示
+    @item = Item.find(params[:id])
   end
 
   # 出品ページ（ログイン必須）
