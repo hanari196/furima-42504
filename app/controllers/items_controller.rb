@@ -27,7 +27,28 @@ class ItemsController < ApplicationController
     end
   end
 
+  # 商品編集
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+       redirect_to @item
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def correct_user
+    @item = Item.find(params[:id])
+    unless current_user == @item.user
+    redirect_to root_path
+    end
+  end
 
   def item_params
     params.require(:item).permit(
