@@ -16,11 +16,11 @@
       <% end %>
 
       <%# 売切表示 %>
-      <%# if @item.sold_out? %>
+      <% if @item.sold_out? %>
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
-      <%# end %>
+      <% end %>
     </div>
 
     <%# 価格・配送料 %>
@@ -38,7 +38,7 @@
       <% if current_user == @item.user && !@item.sold_out? %>
     
         <!-- 自分が出品した販売中の商品 -->
-        <%= link_to "商品の編集", "#", class: "item-red-btn" %>
+        <%= link_to "商品の編集", edit_item_path(@item), class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", "#", data: {turbo_method: :delete}, class:"item-destroy" %>
     

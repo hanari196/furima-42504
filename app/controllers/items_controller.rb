@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   # index, show は誰でも見れる
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   # トップページ表示
   def index
@@ -8,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   # 出品ページ（ログイン必須）
@@ -26,7 +27,30 @@ class ItemsController < ApplicationController
     end
   end
 
+  # 商品編集
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def correct_user
+    return if current_user == @item.user
+
+    redirect_to root_path
+  end
 
   def item_params
     params.require(:item).permit(
