@@ -1,0 +1,17 @@
+ja:
+  activemodel:
+    attributes:
+      order_address:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市区町村
+        house_number: 番地
+        building_name: 建物名
+        phone_number: 電話番号
+        user_id: ユーザー
+        item_id: 商品
+        token: Token
+  errors:
+    messages:
+      blank: "を入力してください"
+      invalid: "は不正な値です"

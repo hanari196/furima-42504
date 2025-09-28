@@ -4,7 +4,7 @@ class OrderAddress
                 :prefecture_id, 
                 :city, 
                 :house_number,
-                :building_nam,
+                :building_name,
                 :phone_number,
                 :user_id,
                 :item_id,
@@ -12,15 +12,19 @@ class OrderAddress
 
   # ここにバリデーション
   with_options presence: true do
-    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, massage: "is invalid.Include hyphen(-)" }
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :postal_code
+    validates :prefecture_id
     validates :city
     validates :house_number
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is invalid" }
+    validates :phone_number
     validates :user_id
     validates :item_id
     validates :token
   end
+
+  validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "は「123-4567」の形式で入力してください" }
+  validates :prefecture_id, numericality: { other_than: 0, message: "を選択してください" }
+  validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "は10桁または11桁の数字で入力してください" }
  
   # 各テーブルにデータを保存する処理
   def save
