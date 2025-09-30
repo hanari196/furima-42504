@@ -1,27 +1,32 @@
 // DOMが読み込まれたタイミングで実行
 document.addEventListener("DOMContentLoaded", () => {
-  // Payjpを初期化（環境変数または直接テスト公開鍵を使用）
-  const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY || 'pk_test_xxxxxxxxxxxxxxxxxx');
+  const form = document.getElementById("charge-form");
+  if (!form) return;
+
+  // Payjpを初期化（公開鍵）
+  const payjp = Payjp("pk_test_361804dc4aa15802e70879b8"); //公開鍵を入れる
 
   // PayjpのElementを生成
   const elements = payjp.elements();
+
+  
+  // mount済みなら処理をスキップ
+  if (document.querySelector("#number-form iframe")) return;
 
   // カード情報入力欄を作成
   const numberElement = elements.create("cardNumber"); // カード番号
   const expiryElement = elements.create("cardExpiry"); // 有効期限
   const cvcElement = elements.create("cardCvc");       // CVC
 
-  // フォーム上のdivにマウント（フォームのIDに合わせる）
-  numberElement.mount("#number-form");
-  expiryElement.mount("#expiry-form");
-  cvcElement.mount("#cvc-form");
+  document.getElementById("number-form") && numberElement.mount("#number-form");
+  document.getElementById("expiry-form") && expiryElement.mount("#expiry-form");
+  document.getElementById("cvc-form") && cvcElement.mount("#cvc-form");
 
   // フォーム送信時の処理
-  const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault(); // デフォルト送信を止める
 
-    // カード情報をPayjpに送ってトークン生成
+  // カード情報をPayjpに送ってトークン生成
     payjp.createToken(numberElement).then((response) => {
       if (response.error) {
         // エラーがあればアラート表示
@@ -30,16 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // トークンをhidden inputとしてフォームに追加
-      const tokenInput = document.createElement("input");
-      tokenInput.setAttribute("type", "hidden");
-      tokenInput.setAttribute("name", "token");
-      tokenInput.setAttribute("value", response.id);
-      form.appendChild(tokenInput);
+      const token = response.id;
+      const tokenInput = document.getElementById("card-token");
+      tokenInput.value = token;
 
       // セキュリティのためカード情報入力欄を削除
-      document.getElementById("number-form").remove();
-      document.getElementById("expiry-form").remove();
-      document.getElementById("cvc-form").remove();
+      document.getElementById("number-form")?.remove();
+      document.getElementById("expiry-form")?.remove();
+      document.getElementById("cvc-form")?.remove();
 
       // トークン付でフォームを送信
       form.submit();

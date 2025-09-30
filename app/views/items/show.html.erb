@@ -46,7 +46,7 @@
     
       <% else %>
         <!-- 自分が出品していない販売中の商品 -->
-        <%= link_to "購入画面に進む", "#", data: { turbo: false }, class:"item-red-btn"%>
+        <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
       <% end %>
     <% end %>
   
