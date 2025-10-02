@@ -2,10 +2,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
   before_action :move_to_root
-  
-  #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入
-  def index  
+ 
+  def index
     @order_address = OrderAddress.new  
+    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -16,25 +16,24 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
+      @item = Item.find(params[:item_id]) 
       render :index, status: :unprocessable_entity
     end
   end
 
-private
+  private
 
 
-   def set_item
+  def set_item
     @item = Item.find(params[:item_id])
   end
 
   #自分の出品物・売却済みならアクセス不可
   def move_to_root
-    if @item.user_id == current_user.id || @item.order.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user_id == current_user.id || @item.order.present?
   end
-
-    def order_address_params
+  
+  def order_address_params
     params.require(:order_address).permit(
       :postal_code, 
       :prefecture_id, 

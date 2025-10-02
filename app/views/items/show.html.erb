@@ -44,19 +44,12 @@
           data: {turbo_method: :delete}, 
           class:"item-destroy" %>
     
-      <% else %>
+      <% elsif current_user != @item.user && !@item.sold_out? %>
         <!-- 自分が出品していない販売中の商品 -->
         <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
       <% end %>
     <% end %>
   
-    <!-- 売り切れ商品 -->
-    <%# if @item.sold_out? %>
-      <%# div class='sold-out-label'>
-        <span>Sold Out!!</span>
-      </div>
-    <% end %>
-
     <%# 商品詳細 %> 
     <div class="item-explain-box">
       <span><%= @item.product_contents %></span>

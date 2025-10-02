@@ -1,0 +1,44 @@
+ja:
+  activemodel:
+    attributes:
+      order_address:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市区町村
+        house_number: 番地
+        building_name: 建物名
+        phone_number: 電話番号
+        user_id: ユーザー
+        item_id: 商品
+        token: Token
+      item:
+        title: 商品名
+        product_contents: 商品の説明
+        category_id: カテゴリー
+        condition_id: 商品の状態
+        shipping_method_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        delivery_time_id: 発送までの日数
+        price: 価格
+        image: 画像
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        last_name: 姓
+        first_name: 名
+        last_name_kana: セイ
+        first_name_kana: メイ
+        birth_day: 生年月日
+  errors:
+    messages:
+      blank: "を入力してください"
+      invalid: "は不正な値です"
+      other_than: "を選択してください"
+      not_a_number: "は数値で入力してください"
+      greater_than_or_equal_to: "は%{count}以上で入力してください"
+      less_than_or_equal_to: "は%{count}以下で入力してください"
+      confirmation: "と%{attribute}が一致しません"
+      too_short: "%{count}文字以上で入力してください"
+      taken: "はすでに存在します"
