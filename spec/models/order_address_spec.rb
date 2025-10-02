@@ -36,7 +36,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'prefecture_id が 0 だと購入できない' do
         @order_address.prefecture_id = 0
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Prefecture must be selected")
+        expect(@order_address.errors.full_messages).to include('Prefecture must be selected')
       end
 
       it 'city が空だと購入できない' do
@@ -54,25 +54,25 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_number が空だと購入できない' do
         @order_address.phone_number = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number must be 10 or 11 digits, numeric only")
+        expect(@order_address.errors.full_messages).to include('Phone number must be 10 or 11 digits, numeric only')
       end
 
       it 'phone_number が9桁以下だと購入できない' do
         @order_address.phone_number = '123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number must be 10 or 11 digits, numeric only")
+        expect(@order_address.errors.full_messages).to include('Phone number must be 10 or 11 digits, numeric only')
       end
 
       it 'phone_number が12桁以上だと購入できない' do
         @order_address.phone_number = '123456789012'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number must be 10 or 11 digits, numeric only")
+        expect(@order_address.errors.full_messages).to include('Phone number must be 10 or 11 digits, numeric only')
       end
 
       it 'phone_number に数字以外が含まれると購入できない' do
         @order_address.phone_number = '090-1234-5678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number must be 10 or 11 digits, numeric only")
+        expect(@order_address.errors.full_messages).to include('Phone number must be 10 or 11 digits, numeric only')
       end
 
       it 'token が空だと購入できない' do
