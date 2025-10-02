@@ -9,9 +9,9 @@ RSpec.describe 'Orders', type: :request do
     allow(Payjp::Charge).to receive(:create).and_return(true)
   end
 
-  describe 'GET /new' do
+  describe 'GET /index' do
     it 'returns http success' do
-      get new_item_order_path(item), headers: { 'ACCEPT' => 'text/html', 'CONTENT_TYPE' => 'text/html' }
+      get item_orders_path(item), headers: { 'ACCEPT' => 'text/html', 'CONTENT_TYPE' => 'text/html' }
       expect(response).to have_http_status(:success)
     end
   end
