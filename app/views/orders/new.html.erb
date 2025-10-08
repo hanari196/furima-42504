@@ -1,0 +1,46 @@
+<h2>購入商品情報</h2>
+
+<div class="item-info">
+  <p>商品名: <%= @item.title %></p>
+  <p>価格: <%= @item.price %>円</p>
+</div>
+
+<div id="payment-form">
+  <div id="number-form">
+    <label>カード番号</label>
+    <input type="text" name="card[number]">
+  </div>
+  <div id="expiry-form">
+    <label>有効期限</label>
+    <input type="text" name="card[expiry]">
+  </div>
+  <div id="cvc-form">
+    <label>CVC</label>
+    <input type="text" name="card[cvc]">
+  </div>
+</div>
+
+<%= form_with model: @order_address, url: item_orders_path(@item), local: true do |f| %>
+  <div>
+    <%= f.label :postal_code, "郵便番号" %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div>
+    <%= f.label :city, "市区町村" %>
+    <%= f.text_field :city %>
+  </div>
+  <div>
+    <%= f.label :house_number, "番地" %>
+    <%= f.text_field :house_number %>
+  </div>
+  <div>
+    <%= f.label :building_name, "建物名" %>
+    <%= f.text_field :building_name %>
+  </div>
+  <div>
+    <%= f.label :phone_number, "電話番号" %>
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <%= f.submit "購入する" %>
+<% end %>
