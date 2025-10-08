@@ -1,9 +1,13 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
-
 abort('The Rails environment is running in production mode!') if Rails.env.production?
+
 require 'rspec/rails'
+
+if defined?(ActiveRecord::FixtureSet) && ActiveRecord::FixtureSet.respond_to?(:fixture_paths=)
+  ActiveRecord::FixtureSet.fixture_paths = []
+end
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -14,11 +18,15 @@ end
 
 RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
-  config.infer_spec_type_from_file_location!
+    config.include Devise::Test::IntegrationHelpers, type: :system   
+  config.include Devise::Test::ControllerHelpers, type: :controller 
 
+  config.include FactoryBot::Syntax::Methods
+
+  config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
-  config.before(:each) do
-    I18n.locale = :en
+  config.before(:each, type: :view) do
+    I18n.locale = :ja
   end
 end
