@@ -73,16 +73,22 @@
       <span class="indispensable">必須</span>
     </div>
 
-    <div class='input-birth-wrap'>
-      <%= f.date_select :birth_day,
-        start_year: 1930,
-        end_year: Time.current.year - 5,
-        use_month_numbers: true,
-        prompt: { year: '--', month: '--', day: '--' },
-        order: [:year, :month, :day],
-        class: 'select-birth',
-        id: 'birth-date' %>
-    </div>
+  <div class='input-birth-wrap'>
+    <label>
+      <%= f.select :birth_year, options_for_select((1930..(Time.current.year - 5)).to_a.reverse, nil), { prompt: '---' }, class: 'select-birth' %>
+      <span style="display: inline-block; vertical-align: middle;">年</span>
+    </label>
+
+    <label>
+      <%= f.select :birth_month, options_for_select((1..12).to_a, nil),  { prompt: '---' }, class: 'select-birth' %>
+      <span style="display: inline-block; vertical-align: middle;">月</span>
+    </label>
+
+    <label>
+      <%= f.select :birth_day, options_for_select((1..31).to_a, nil), { prompt: '---' }, class: 'select-birth' %>
+      <span style="display: inline-block; vertical-align: middle;">日</span>
+    </label></div>
+    
     <p class='info-text'>※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
   </div>
 
