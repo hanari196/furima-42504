@@ -15,6 +15,7 @@ en:
         first_name_kana: "First name kana"
         birth_day: "Birth day"
       item:
+        image: "Image"
         title: "Title"
         product_contents: "Product contents"
         category_id: "Category"
@@ -23,8 +24,20 @@ en:
         prefecture_id: "Prefecture"
         delivery_time_id: "Delivery time"
         price: "Price"
-        image: "Image"
     errors:
+      models:
+        user:
+          attributes:
+            password:
+              invalid: "is invalid. Include both letters and numbers"
+            last_name:
+              invalid: "is invalid. Input full-width characters"
+            first_name:
+              invalid: "is invalid. Input full-width characters"
+            last_name_kana:
+              invalid: "is invalid. Input full-width katakana characters"
+            first_name_kana:
+              invalid: "is invalid. Input full-width katakana characters"
       messages:
         blank: "can't be blank"
         taken: "has already been taken"
@@ -37,6 +50,9 @@ en:
         greater_than_or_equal_to: "must be greater than or equal to %{count}"
         less_than_or_equal_to: "must be less than or equal to %{count}"
         other_than: "must be other than %{count}"
+        invalid_password: "is invalid. Include both letters and numbers"
+        invalid_full_width: "is invalid. Input full-width characters"
+        invalid_katakana: "is invalid. Input full-width katakana characters"
 
   activemodel:
     models:

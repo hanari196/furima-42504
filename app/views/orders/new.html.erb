@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<%= form_with model: @order_address, url: item_orders_path(@item), local: true do |f| %>
+<%= form_with model: @order_address, url: item_orders_path(@item), method: :post, local: true, html: { id: 'order-form', novalidate: true } do |f| %>
   <div>
     <%= f.label :postal_code, "郵便番号" %>
     <%= f.text_field :postal_code %>

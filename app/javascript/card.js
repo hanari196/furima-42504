@@ -28,11 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // カード情報をPayjpに送ってトークン生成
     payjp.createToken(numberElement).then((response) => {
-      if (response.error) {
-        // エラーがあればアラート表示
-        alert(response.error.message);
-        return;
-      }
 
       // トークンをhidden inputとしてフォームに追加
       const token = response.id;
