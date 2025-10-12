@@ -1,43 +1,31 @@
-# MySQL. Versions 5.5.8 and up are supported.
-#
-# Install the MySQL driver
-#   gem install mysql2
-#
-# Ensure the MySQL gem is defined in your Gemfile
-#   gem "mysql2"
-#
-# And be sure to use new-style password hashing:
-#   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
-#
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  host: localhost
+default: &default 
+  adapter: mysql2 
+  encoding: utf8 
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %> 
+  username: root 
+  password: 
+  host: local
 
-development:
-  <<: *default
-  database: furima_42504_development
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
+development: 
+  <<: *default 
+  database: furima_42504_development 
+  adapter: mysql2 
+  username: root 
+  password: 
+  host: localhost 
 
-test:
-  <<: *default
-  database: furima_42504_test
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
+test: 
+  <<: *default 
+  database: furima_42504_test 
+  adapter: mysql2 
+  username: root 
+  password: 
+  host: localhost 
 
-
-production:
-  <<: *default
-  database: furima_42504_production
+production: 
+  <<: *default 
+  database: furima_42504_production 
   username: furima_42504
-  password: <%= ENV["FURIMA_42504_DATABASE_PASSWORD"] %>
-  adapter: postgresql
+  password: <%= ENV["FURIMA_42504_DATABASE_PASSWORD"] %> 
+  adapter: postgresql 
   url: <%= ENV['DATABASE_URL'] %>

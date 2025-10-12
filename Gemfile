@@ -42,4 +42,4 @@ end
 gem 'devise'
 gem 'active_hash'
 gem 'payjp'
-
+gem 'mysql2', '>= 0.5.5', '< 1.0'
