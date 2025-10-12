@@ -3,7 +3,7 @@ document.addEventListener('turbo:load', () => {
   const addTaxPrice = document.getElementById('add-tax-price');
   const profit = document.getElementById('profit');
 
-  if (!priceInput) return;
+  if (!priceInput || !addTaxPrice || !profit) return;
 
     priceInput.addEventListener('input', () => {
      const value = parseInt(priceInput.value, 10) || 0;
