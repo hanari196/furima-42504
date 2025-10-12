@@ -22,16 +22,16 @@ class Item < ApplicationRecord
     validates :title
     validates :product_contents
     validates :price
+  end
 
-    with_options numericality: { other_than: 1 } do
+    with_options numericality: { other_than: 1, message: "can't be blank" } do
       validates :category_id
       validates :condition_id
       validates :shipping_method_id
       validates :prefecture_id
       validates :delivery_time_id
     end
-  end
-
+  
   validates :price,
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 300,
