@@ -1,13 +1,19 @@
-document.addEventListener('turbo:load', () => {
+const initializePriceCalculation = () => {
   const priceInput = document.getElementById('item-price');
   const addTaxPrice = document.getElementById('add-tax-price');
   const profit = document.getElementById('profit');
 
   if (!priceInput) return;
 
-    priceInput.addEventListener('input', () => {
-     const value = parseInt(priceInput.value, 10) || 0;
-    addTaxPrice.innerHTML = Math.floor(value * 0.1);
-    profit.innerHTML = value - Math.floor(value * 0.1);
+  priceInput.replaceWith(priceInput.cloneNode(true));
+  const newPriceInput = document.getElementById('item-price');
+
+  newPriceInput.addEventListener('input', () => {
+    const value = parseInt(newPriceInput.value, 10) || 0;
+    addTaxPrice.textContent = Math.floor(value * 0.1);
+    profit.textContent = value - Math.floor(value * 0.1);
   });
-});
+};
+
+document.addEventListener('turbo:load', initializePriceCalculation);
+document.addEventListener('turbo:render', initializePriceCalculation);
