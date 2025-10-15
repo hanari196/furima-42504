@@ -16,12 +16,10 @@ group :development, :test do
   gem 'dotenv-rails'
   gem "sqlite3", "~> 1.4"
 
-  # テスト用
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
   gem 'faker'
 
-  # コード解析
   gem 'rubocop', '1.71.2', require: false
   gem 'rubocop-rails', require: false
 end

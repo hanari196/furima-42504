@@ -10,20 +10,32 @@ class OrderAddress
                 :item_id,
                 :token
 
-  # バリデーション
-  with_options presence: { message:"can't be blank" } do
-    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'Input correctly' }
+  # 必須項目チェック
+  with_options presence: { message: "can't be blank" } do
+    validates :postal_code
     validates :city
     validates :house_number
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'Input only number' }
-    validates :token
+    validates :phone_number
     validates :user_id
     validates :item_id
+    validates :token
   end
-    
-    validates :prefecture_id, numericality: { other_than: 0, message: 'Select' }
 
-  # 保存する処理
+  # 郵便番号
+  validates :postal_code,
+            format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Enter it as follows (e.g. 123-4567)' }
+
+  # 都道府県
+  validates :prefecture_id,
+            numericality: { other_than: 1, message: "can't be blank" }
+
+  # 電話番号
+  validates :phone_number,
+            format: { with: /\A\d+\z/, message: 'is invalid. Input only number' }
+  validates :phone_number,
+            length: { minimum: 10, maximum: 11, message: 'is too short' }
+
+  # 保存処理
   def save
     return false unless valid?
 

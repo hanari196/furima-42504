@@ -74,7 +74,8 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
-
+      
+      #models > order_address_spec.rb
       it 'user_id が空だと購入できない' do
         @order_address.user_id = nil
         @order_address.valid?
