@@ -14,7 +14,7 @@
           <%= @item.title %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= @item.price %></p>
+          <p class='item-price-text'>¥<%= number_with_delimiter(@item.price) %></p>
           <p class='item-price-sub-text'><%= @item.shipping_method.name %></p>
         </div>
       </div>
@@ -27,7 +27,7 @@
         支払金額
       </h1>
       <p class='item-payment-price'>
-        ¥<%= @item.price %>
+        ¥<%= number_with_delimiter(@item.price) %>
       </p>
     </div>
     <%# /支払額の表示 %>
